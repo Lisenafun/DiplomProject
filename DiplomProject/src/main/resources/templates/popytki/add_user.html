@@ -1,0 +1,19 @@
+<!DOCTYPE html "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Augury 100: регистрация</title>
+</head>
+<body>
+<h2>Регистрация</h2>
+<form action="#" th:action="@{/player/create}" th:object="${player}" method="post">
+    <!--<p>Id пользователя: <input type="text" th:field="*{id}"></p>-->
+    <p>Логин: <input type="text" th:field="*{login}"></p>
+    <p>Пароль: <input type="text" th:field="*{password}"></p>
+    <p>
+        <!--<input type="submit" value="Добавить">-->
+        <a href="/Main_menu">Добавить</a></p>
+</form>
+</body>
+</html>

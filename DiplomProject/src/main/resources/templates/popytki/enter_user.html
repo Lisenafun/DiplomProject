@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Augury 100: вход в аккаунт</title>
+</head>
+<body>
+<h2>Вход в аккаунт</h2>
+<form action="#" th:action="@{/player/enter}" th:object="${player}" method="post">
+    <!--<p>Id пользователя: <input type="text" th:field="*{id}"></p>-->
+    <p>Логин: <input type="text" th:field="*{login}"></p>
+    <p>Пароль: <input type="text" th:field="*{password}"></p>
+    <p><input type="submit" value="Войти"></p>
+</form>
+</body>
+</html>
