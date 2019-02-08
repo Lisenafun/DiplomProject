@@ -28,35 +28,21 @@ public class LoginController {
         return modelAndView;
     }
 
-//    @RequestMapping(value={"/", "/login"}, method = RequestMethod.POST)
-//    public ModelAndView enterPlayer(@Valid Player player, BindingResult bindingResult){
-//        ModelAndView modelAndView = new ModelAndView();
-//        Player plExists = playerService.findPlayerByEmail (player.getEmail());
-//        if (plExists == null) {
-//            bindingResult
-//                    .rejectValue("email", "error.player",
-//                            "Пользователь с указанным адресом электронной почты не зарегистрирован");
-////        }if (bindingResult.hasErrors()) {
-////            modelAndView.setViewName("login");
-//        } else {
-//            modelAndView.setViewName("/user/home");
-//        }
-//        return modelAndView;
-//    }
-
-        @RequestMapping(value={"/", "/login"}, method = RequestMethod.POST)
-        public String enterPlayer(@ModelAttribute Player player, Model model, BindingResult bindingResult) {
-            Player plExists = playerService.findPlayerByEmail (player.getEmail ());
-            if (plExists == null) {
-                bindingResult.rejectValue ("email", "error.player", "Пользователь с указанным адресом электронной почты не зарегистрирован");
-            }
-            if (bindingResult.hasErrors ()) {
-                return "login";
-            } else {
-//                model.addAttribute ("findPl", player.getLogin ());
-                return "home";
-            }
+    @RequestMapping(value={"/login"}, method = RequestMethod.POST)
+    public ModelAndView enterPlayer(@Valid Player player, BindingResult bindingResult){
+        ModelAndView modelAndView = new ModelAndView();
+        Player plExists = playerService.findPlayerByEmail (player.getEmail());
+        if (plExists == null) {
+            bindingResult
+                    .rejectValue("email", "error.player",
+                            "Пользователь с указанным адресом электронной почты не зарегистрирован");
+        }if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("login");
+        } else {
+            modelAndView.setViewName("/user/home");
         }
+        return modelAndView;
+    }
 
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
@@ -93,11 +79,16 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Player player = playerService.findPlayerByEmail (auth.getName());
-        modelAndView.addObject("playerLogin", "Welcome " + player.getLogin () + " (" + player.getEmail() + ")");
-        modelAndView.addObject("adminMessage","Содержимое доступно только для пользователей с ролью администратора");
+        modelAndView.addObject("playerLogin", "Welcome " + player.getLogin ());
+        modelAndView.addObject("adminMessage","Вы вошли в свой аккаунт!");
         modelAndView.setViewName("user/home");
         return modelAndView;
     }
 
-
+    @RequestMapping(value={"/game"}, method = RequestMethod.GET)
+    public ModelAndView newGame(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("game");
+        return modelAndView;
+    }
 }

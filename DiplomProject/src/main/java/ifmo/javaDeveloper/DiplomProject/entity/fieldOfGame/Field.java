@@ -1,10 +1,9 @@
-package ifmo.javaDeveloper.DiplomProject.fieldOfGame;
+package ifmo.javaDeveloper.DiplomProject.entity.fieldOfGame;
 
 import ifmo.javaDeveloper.DiplomProject.entity.Player;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -24,8 +23,8 @@ public class Field {
     @Column(name = "field")
     private LinkedHashMap<Double, Integer> field;
 
-    @Column(name = "dateOfCreation")
-    private LocalDate date;
+//    @Column(name = "dateOfCreation")
+//    private LocalDate date;
 
     private LinkedList<Integer> count;
     private int length;
@@ -108,13 +107,13 @@ public class Field {
         this.field = field;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
+//    public LocalDate getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(LocalDate date) {
+//        this.date = date;
+//    }
     //    public static void main(String[] args) {
 //        NameOracle nameOracle = new NameOracle ();
 //        nameOracle.setName ("Stepan");

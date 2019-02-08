@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Admin Page</title>
+    <title>Аккаунт</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -12,26 +12,21 @@
 
 <body>
 <div class="container">
-
-    <form th:action="@{/logout}" method="get">
-        <button class="btn btn-md btn-danger btn-block" name="registration"
-                type="Submit">Logout
-        </button>
-    </form>
-
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <span th:utext="${playerLogin}"></span>
             </div>
-            <div class="panel-body">
-                <img th:src="@{/images/beer.jpg}" class="img-responsive center-block" width="400" height="400"
-                     alt="Beer"/>
-            </div>
             <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
         </div>
     </div>
-
+    <form th:action="@{/game}" method="get">
+        <button class="btn btn-lg btn-primary" type="Submit">Новая игра</button>
+    </form>
+    <form th:action="@{/logout}" method="get">
+        <button class="btn btn-lg btn-danger" name="registration"
+                type="Submit">Выйти из аккаунта</button>
+    </form>
 </div>
 </body>
 </html>

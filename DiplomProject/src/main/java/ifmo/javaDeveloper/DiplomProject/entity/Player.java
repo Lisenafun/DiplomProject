@@ -1,6 +1,6 @@
 package ifmo.javaDeveloper.DiplomProject.entity;
 
-import ifmo.javaDeveloper.DiplomProject.fieldOfGame.Field;
+import ifmo.javaDeveloper.DiplomProject.entity.fieldOfGame.Field;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;

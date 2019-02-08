@@ -1,8 +1,12 @@
-package ifmo.javaDeveloper.DiplomProject.fieldOfGame;
+package ifmo.javaDeveloper.DiplomProject.entity.fieldOfGame;
 
 public class NameOracle {
     private String name;
     private int lengthName;
+
+    public NameOracle(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;
