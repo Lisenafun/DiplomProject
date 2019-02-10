@@ -20,8 +20,9 @@
             <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
         </div>
     </div>
-    <form th:action="@{/game}" method="get">
-        <button class="btn btn-lg btn-primary" type="Submit">Новая игра</button>
+    <form th:action="@{/nameOracle}" method="get">
+        <button class="btn btn-lg btn-primary"
+                type="Submit">Новая игра</button>
     </form>
     <form th:action="@{/logout}" method="get">
         <button class="btn btn-lg btn-danger" name="registration"

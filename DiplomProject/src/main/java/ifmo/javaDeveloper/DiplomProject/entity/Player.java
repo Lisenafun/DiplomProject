@@ -39,8 +39,18 @@ public class Player {
     @JoinTable(name = "player_role", joinColumns = @JoinColumn(name = "player_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private Set<Field> fields;
+    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Field> fields;
+
+    public Set<Field> getFields() {
+        return fields;
+    }
+
+    public void setFields(Set<Field> fields) {
+        this.fields = fields;
+    }
+
+
 
     public int getId() {
         return id;

@@ -84,11 +84,4 @@ public class LoginController {
         modelAndView.setViewName("user/home");
         return modelAndView;
     }
-
-    @RequestMapping(value={"/game"}, method = RequestMethod.GET)
-    public ModelAndView newGame(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("game");
-        return modelAndView;
-    }
 }

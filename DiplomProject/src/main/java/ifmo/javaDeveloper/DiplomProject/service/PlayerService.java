@@ -3,6 +3,7 @@ package ifmo.javaDeveloper.DiplomProject.service;
 
 import ifmo.javaDeveloper.DiplomProject.entity.Player;
 import ifmo.javaDeveloper.DiplomProject.entity.Role;
+import ifmo.javaDeveloper.DiplomProject.entity.fieldOfGame.Field;
 import ifmo.javaDeveloper.DiplomProject.repository.PlayerRepository;
 import ifmo.javaDeveloper.DiplomProject.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;

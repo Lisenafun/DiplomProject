@@ -16,76 +16,80 @@ public class Field {
     @Column(name = "id", length = 8, nullable = false)
     private int id;
 
+    @Column(name = "nameOracle")
+    private String nameOracle;
+
     @ManyToOne()
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "player_id")
     private Player player;
 
     @Column(name = "field")
     private LinkedHashMap<Double, Integer> field;
 
-//    @Column(name = "dateOfCreation")
-//    private LocalDate date;
 
-    private LinkedList<Integer> count;
+    private static LinkedList<Integer> numbers;
     private int length;
     private double width;
 
-    public Field(NameOracle nameOracle) {
-        count = getCount ();
-        this.width = nameOracle.getLengthName ();
-        this.length=count.size ()%width==0?(int)(count.size ()/width):(int)(count.size ()/width+1);
+    public Field() {
     }
-    private LinkedList<Integer> getCount() {
-        count = new LinkedList<> ();
+
+    public Field(String nameOracle) {
+        numbers = getNumbers ();
+        this.width = nameOracle.length ();
+        this.length= numbers.size ()%width==0?(int)(numbers.size ()/width):(int)(numbers.size ()/width+1);
+    }
+    private LinkedList<Integer> getNumbers() {
+        numbers = new LinkedList<> ();
         for (int i = 1; i <= 9; i++) {
-        this.count.add (i);
+        numbers.add (i);
         }
         for (int i = 10; i < 100; i++) {
             if(i%10 == 0){
                 int j = i/10;
-                this.count.add (j);
+                numbers.add (j);
             }else {
                 int j = i/10;
                 int k = i%10;
-                this.count.add (j);
-                this.count.add (k);
+                numbers.add (j);
+                numbers.add (k);
             }
         }
-        this.count.add (1);
-        return count;
+        numbers.add (1);
+        return numbers;
     }
 
-    public LinkedHashMap<Double, Integer> saveField(){
+    public LinkedHashMap<Double, Integer> saveFieldMap(){
         this.field = new LinkedHashMap<> (this.length);
         for (double i = 1; i <= this.length; i++) {
             for (double j = 0.1; j <= this.width/10; j+=0.1) {
-                if(count.isEmpty ()){
+                if(numbers.isEmpty ()){
                     break;
                 }else{
-                    field.put (i+j,count.pollFirst ());
+                    field.put (i+j, numbers.pollFirst ());
                 }
             }
         }
         return field;
     }
-
-    public void getField(){
-        saveField ();
-        count = getCount ();
-        Map<Double, Integer> map = new LinkedHashMap<> (this.length);
-        for (double i = 1; i <= this.length; i++) {
-            for (double j = 0.1; j <= this.width/10; j+=0.1) {
-                if(count.isEmpty ()){
-                    break;
-                }else {
-                    map.put (i + j, count.pollFirst ());
-                }
-            }
-            map.entrySet ().stream ().forEach (item->System.out.print(item.getValue() + " "));
-            map.clear ();
-            System.out.print ("\n");
-        }
-    }
+//
+//    public void getField(){
+//        saveFieldMap ();
+//        numbers = getNumbers ();
+//        Map<Double, Integer> map = new LinkedHashMap<> (this.length);
+//        for (double i = 1; i <= this.length; i++) {
+//            for (double j = 0.1; j <= this.width/10; j+=0.1) {
+//                if(numbers.isEmpty ()){
+//                    break;
+//                }else {
+//                    map.put (i + j, numbers.pollFirst ());
+//                }
+//            }
+//            map.entrySet ().stream ().forEach (item->System.out.print(item.getValue() + " "));
+//            map.clear ();
+//            System.out.print ("\n");
+//        }
+//    }
 
     public int getId() {
         return id;
@@ -107,13 +111,18 @@ public class Field {
         this.field = field;
     }
 
-//    public LocalDate getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(LocalDate date) {
-//        this.date = date;
-//    }
+    public LinkedHashMap<Double, Integer> getField() {
+        return field;
+    }
+
+    public String getNameOracle() {
+        return nameOracle;
+    }
+
+    public void setNameOracle(String nameOracle) {
+        this.nameOracle = nameOracle;
+    }
+
     //    public static void main(String[] args) {
 //        NameOracle nameOracle = new NameOracle ();
 //        nameOracle.setName ("Stepan");
